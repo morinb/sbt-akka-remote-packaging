@@ -6,6 +6,8 @@ sbt application that mixes Java and Scala with Akka.
 
 The application is packaged with [sbt-onejar](https://github.com/sbt/sbt-onejar) plugin.
 
+To create the jar just run on the project command line : `sbt one-jar`
+
 The minimalist GUI (a button in a frame) is coded in java with swing.
 The button sends a message to the client actor, which forward it to the server actor.
 
