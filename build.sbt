@@ -2,7 +2,7 @@ import com.github.retronym.SbtOneJar._
 
 oneJarSettings
 
-name := "test-sbt-akka-remote-packaging"
+name := "sbt-akka-remote-packaging"
 
 version := "1.0"
 
