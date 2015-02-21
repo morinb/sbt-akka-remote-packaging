@@ -4,7 +4,7 @@ import javax.swing.WindowConstants
 
 import akka.actor.{Props, ActorLogging, ActorSystem}
 import com.typesafe.config.ConfigFactory
-import org.bm.java.akka.remote.packaging.{ShutdownHook, ClientMain}
+import org.bm.java.akka.remote.packaging.{ShutdownHook, ClientFrame}
 import org.bm.scala.akka.remote.packaging.actors.actors.common.Initialize
 import org.bm.scala.akka.remote.packaging.actors.client.ClientActor
 import org.bm.scala.akka.remote.packaging.actors.server.ServerActor
@@ -31,7 +31,7 @@ object ApplicationMain {
     val client = system.actorOf(Props(classOf[ClientActor], remotePath), "client")
 
     Runtime.getRuntime.addShutdownHook(new ShutdownHook(system, client))
-    val frame = new ClientMain(system, client)
+    val frame = new ClientFrame(system, client)
     frame.setSize(800, 600)
     frame.setLocationRelativeTo(null)
     frame.setVisible(true)

@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
  *
  * @author Baptiste Morin
  */
-public class ClientMain extends JFrame {
+public class ClientFrame extends JFrame {
     private final ActorSystem system;
     private final ActorRef client;
 
@@ -28,7 +28,7 @@ public class ClientMain extends JFrame {
         }
     });
 
-    public ClientMain(ActorSystem system, ActorRef client) {
+    public ClientFrame(ActorSystem system, ActorRef client) {
         this.system = system;
         this.client = client;
 
