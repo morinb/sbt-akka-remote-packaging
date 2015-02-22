@@ -23,13 +23,6 @@ import java.awt.event.ActionEvent;
 public class ClientFrame extends JFrame implements ResponseReceivedEventHandler {
     private final ActorRef client;
 
-    private JButton sendStatusCommand = new JButton(new AbstractAction("Ask Status") {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            client.tell(new Message("uir", Status$.MODULE$), ActorRef.noSender());
-        }
-    });
-
     private JTextArea jTextArea = new JTextArea();
 
     public ClientFrame() {
@@ -46,7 +39,13 @@ public class ClientFrame extends JFrame implements ResponseReceivedEventHandler 
         this.setLayout(new BorderLayout());
 
         this.add(new JScrollPane(jTextArea), BorderLayout.CENTER);
-        this.add(sendStatusCommand, BorderLayout.SOUTH);
+
+        this.add(new JButton(new AbstractAction("Ask Status") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                client.tell(new Message("uir", Status$.MODULE$), ActorRef.noSender());
+            }
+        }), BorderLayout.SOUTH);
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         Runtime.getRuntime().addShutdownHook(new ShutdownHook(system, client));

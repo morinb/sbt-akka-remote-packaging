@@ -15,7 +15,8 @@ The server answer to the client actor that display the received result in the lo
 
 For the gui to be updated, the client actor should communicate with the ClientFrame class :
 
-* make ClientFrame be the client actor, thus it will be easy to update its field when a message is received.
-  And there will be no need to forward message to server, but just send it.
-* Make the ClientFrame listen to ClientActor changes, but in this case, this will break the ActorRef principle.
-
+* Create a trait that will describe the event handler contrat. => org.bm.scala.akka.remote.packaging.actors.client.ResponseReceivedEventHandler
+* Make your actor take the event handler as parameter.
+* Call the event handler when needed
+* Make your GUI implements the Event handler methods and update gui on purpose.
+* Happy ! !
