@@ -10,7 +10,6 @@ import scala.concurrent.duration._
  * @author Baptiste Morin
  */
 class ClientActor(serverActorPath: String) extends Actor with ActorLogging {
-
   sendIdentifyRequest()
 
   def sendIdentifyRequest(): Unit = {
@@ -25,11 +24,14 @@ class ClientActor(serverActorPath: String) extends Actor with ActorLogging {
       log.info("Server terminated.")
       sendIdentifyRequest()
       context.become(identifying) // switch back to identifying
+
     case m: Message =>
       log.info(s"Sending $m")
       server ! m
+
     case Response(m, r) =>
       log.info(s"Received answer : $r")
+
     case ClientTerminate =>
       log.info("Receive ClientTerminate signal, stopping...")
       context.stop(self)
