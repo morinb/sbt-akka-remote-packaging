@@ -17,6 +17,5 @@ For the gui to be updated, the client actor should communicate with the ClientFr
 
 * make ClientFrame be the client actor, thus it will be easy to update its field when a message is received.
   And there will be no need to forward message to server, but just send it.
-* Make the ClientFrame listen to ClientActor changes, but in this case, the client actor is just a gateway
-  that will forward message from gui to server.
+* Make the ClientFrame listen to ClientActor changes, but in this case, this will break the ActorRef principle.
 
