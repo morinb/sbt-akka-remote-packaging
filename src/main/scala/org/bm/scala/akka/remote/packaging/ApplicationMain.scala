@@ -25,13 +25,7 @@ object ApplicationMain {
   }
 
   def startClientSide(): Unit = {
-    val system = ActorSystem("ClientSystem", ConfigFactory.load("client"))
-    val remotePath = "akka.tcp://ServerSystem@127.0.0.1:2553/user/server"
-
-    val client = system.actorOf(Props(classOf[ClientActor], remotePath), "client")
-
-    Runtime.getRuntime.addShutdownHook(new ShutdownHook(system, client))
-    val frame = new ClientFrame(system, client)
+    val frame = new ClientFrame()
     frame.setSize(800, 600)
     frame.setLocationRelativeTo(null)
     frame.setVisible(true)
